@@ -1,0 +1,319 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║     🗄️ PAPATYA BOTANİK - VERİTABANI KURULUM REHBERİ 🗄️         ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 İÇİNDEKİLER
+═══════════════════════════════════════════════════════════════
+1. Veritabanı Hakkında
+2. phpMyAdmin ile Kurulum
+3. Bağlantı Ayarları
+4. Test ve Doğrulama
+5. Sorun Giderme
+6. Veritabanı Yapısı
+
+
+═══════════════════════════════════════════════════════════════
+1️⃣ VERİTABANI HAKKINDA
+═══════════════════════════════════════════════════════════════
+
+Veritabanı Adı: papatya_botanik
+Karakter Seti: UTF8MB4 (Türkçe karakter desteği)
+Motor: InnoDB (Foreign Key desteği)
+
+📊 TABLO SAYISI: 10 Tablo
+
+Tablolar:
+✅ site_settings       - Site ayarları (telefon, e-posta vb.)
+✅ categories          - Ürün kategorileri (8 kategori hazır)
+✅ products            - Ürünler (5 örnek ürün hazır)
+✅ product_gallery     - Ürün görselleri
+✅ contact_messages    - İletişim formu mesajları
+✅ orders              - Siparişler (gelecek için)
+✅ admin_users         - Admin kullanıcıları (1 admin hazır)
+✅ site_statistics     - Site istatistikleri
+✅ blog_posts          - Blog yazıları (gelecek için)
+✅ sliders             - Slider/banner yönetimi
+
+
+═══════════════════════════════════════════════════════════════
+2️⃣ phpMyAdmin İLE KURULUM
+═══════════════════════════════════════════════════════════════
+
+Adım 1: XAMPP'de MySQL'i Başlatın
+   ▶ XAMPP Control Panel'i açın
+   ▶ "MySQL" satırındaki "Start" butonuna tıklayın
+   ✓ MySQL başarıyla başladığında yeşil renk olacaktır
+
+Adım 2: phpMyAdmin'i Açın
+   🌐 Tarayıcınızda şu adresi açın:
+   http://localhost/phpmyadmin
+
+Adım 3: SQL Dosyasını İçe Aktarın
+   
+   a) Sol üst menüden "Import" (İçe Aktar) sekmesine tıklayın
+   
+   b) "Choose File" (Dosya Seç) butonuna tıklayın
+   
+   c) Şu dosyayı seçin:
+      📄 database/papatya_botanik.sql
+   
+   d) Sayfayı aşağı kaydırın ve "Go" (Git) butonuna basın
+   
+   e) ✅ "Import has been successfully finished" mesajını bekleyin
+
+Adım 4: Veritabanını Kontrol Edin
+   
+   ✓ Sol menüde "papatya_botanik" veritabanını göreceksiniz
+   ✓ Tıkladığınızda 10 tablo listelenecektir
+   ✓ Tablolardan birine tıklayıp içeriği görüntüleyin
+
+
+═══════════════════════════════════════════════════════════════
+3️⃣ BAĞLANTI AYARLARI
+═══════════════════════════════════════════════════════════════
+
+Veritabanı bağlantı dosyası zaten hazır:
+📄 includes/db.php
+
+Varsayılan Ayarlar (XAMPP için):
+┌─────────────────────────────────────────────────────────┐
+│ Sunucu:         localhost                               │
+│ Veritabanı:     papatya_botanik                         │
+│ Kullanıcı Adı:  root                                    │
+│ Şifre:          (boş)                                   │
+│ Karakter Seti:  utf8mb4                                 │
+└─────────────────────────────────────────────────────────┘
+
+🔧 Değiştirmeniz Gerekenler:
+
+Eğer XAMPP kullanıyorsanız varsayılan ayarlar yeterlidir.
+Eğer başka bir sunucu kullanıyorsanız:
+
+includes/db.php dosyasını açın ve şu satırları düzenleyin:
+
+   define('DB_HOST', 'localhost');           ← Sunucu adresi
+   define('DB_NAME', 'papatya_botanik');     ← Veritabanı adı
+   define('DB_USER', 'root');                ← Kullanıcı adı
+   define('DB_PASS', '');                    ← Şifre
+
+
+═══════════════════════════════════════════════════════════════
+4️⃣ TEST VE DOĞRULAMA
+═══════════════════════════════════════════════════════════════
+
+Test Dosyası Oluşturun:
+📄 Dosya: test_db.php (proje kök dizinine)
+
+   <?php
+   require_once 'includes/db.php';
+   
+   echo "<h1>Veritabanı Bağlantı Testi</h1>";
+   
+   // Test 1: Site ayarları
+   echo "<h2>1. Site Ayarları</h2>";
+   $site_name = getSettingValue('site_name');
+   echo "Site Adı: " . $site_name . "<br>";
+   
+   // Test 2: Kategoriler
+   echo "<h2>2. Kategoriler</h2>";
+   $categories = getActiveCategories();
+   echo "Toplam Kategori: " . count($categories) . "<br>";
+   foreach ($categories as $cat) {
+       echo "- " . $cat['name'] . "<br>";
+   }
+   
+   // Test 3: Ürünler
+   echo "<h2>3. Ürünler</h2>";
+   $products = getAllActiveProducts();
+   echo "Toplam Ürün: " . count($products) . "<br>";
+   foreach ($products as $product) {
+       echo "- " . $product['name'] . " (" . $product['category_name'] . ")<br>";
+   }
+   
+   echo "<h2>✅ Tüm testler başarılı!</h2>";
+   ?>
+
+Test Dosyasını Çalıştırın:
+   🌐 http://localhost/botanik/papatyabotabik2/test_db.php
+
+Beklenen Sonuç:
+   ✅ Site Adı: Papatya Botanik
+   ✅ Toplam Kategori: 8
+   ✅ Kategori listesi görünecek
+   ✅ Toplam Ürün: 5
+   ✅ Ürün listesi görünecek
+
+⚠️ Test sonrası test_db.php dosyasını silin (güvenlik için)!
+
+
+═══════════════════════════════════════════════════════════════
+5️⃣ SORUN GİDERME
+═══════════════════════════════════════════════════════════════
+
+❌ PROBLEM: "Access denied for user 'root'@'localhost'"
+   ✓ XAMPP'de MySQL çalışıyor mu kontrol edin
+   ✓ includes/db.php dosyasındaki kullanıcı adı/şifre doğru mu?
+   ✓ XAMPP Security'de şifre belirlediyseniz DB_PASS'e ekleyin
+
+❌ PROBLEM: "Unknown database 'papatya_botanik'"
+   ✓ SQL dosyasını içe aktardınız mı?
+   ✓ phpMyAdmin'de "papatya_botanik" veritabanı var mı?
+   ✓ Veritabanı adını yanlış yazmış olabilir misiniz?
+
+❌ PROBLEM: "Table doesn't exist"
+   ✓ SQL dosyasının tamamı içe aktarıldı mı?
+   ✓ İçe aktarma sırasında hata mesajı var mıydı?
+   ✓ phpMyAdmin'de 10 tablo görünüyor mu?
+
+❌ PROBLEM: "Connection refused"
+   ✓ XAMPP'de MySQL başlatıldı mı?
+   ✓ Port 3306 kullanımda mı? (Netstat kontrolü)
+   ✓ Firewall MySQL'i engelliyor mu?
+
+❌ PROBLEM: Türkçe karakterler bozuk görünüyor
+   ✓ Veritabanı karakter seti UTF8MB4 mi?
+   ✓ includes/db.php'de charset ayarı doğru mu?
+   ✓ HTML sayfada <meta charset="UTF-8"> var mı?
+
+
+═══════════════════════════════════════════════════════════════
+6️⃣ VERİTABANI YAPISI DETAY
+═══════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────┐
+│ 1. SITE_SETTINGS - Site Ayarları                           │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Site genelinde kullanılan ayarlar
+İçerik: 16 varsayılan ayar (telefon, e-posta, logo vb.)
+
+Örnek Kullanım:
+   $phone = getSettingValue('phone_number');
+   $email = getSettingValue('email');
+
+┌─────────────────────────────────────────────────────────────┐
+│ 2. CATEGORIES - Kategoriler                                │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Ürün kategorilerini saklar
+İçerik: 8 kategori hazır (Buketler, İsteme Çiçekleri vb.)
+
+Örnek Kullanım:
+   $categories = getActiveCategories();
+   foreach ($categories as $cat) {
+       echo $cat['name'];
+   }
+
+┌─────────────────────────────────────────────────────────────┐
+│ 3. PRODUCTS - Ürünler                                       │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Tüm ürünleri saklar
+İçerik: 5 örnek ürün hazır
+
+Örnek Kullanım:
+   $products = getProductsByCategory(1); // 1 numaralı kategori
+   foreach ($products as $product) {
+       echo $product['name'] . ' - ' . $product['price'];
+   }
+
+┌─────────────────────────────────────────────────────────────┐
+│ 4. PRODUCT_GALLERY - Ürün Görselleri                       │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Her ürüne ait birden fazla görsel
+İçerik: Boş (sizin eklemeniz için)
+
+┌─────────────────────────────────────────────────────────────┐
+│ 5. CONTACT_MESSAGES - İletişim Mesajları                   │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: İletişim formundan gelen mesajları saklar
+İçerik: Boş (formdan gelen mesajlar burada)
+
+Örnek Kullanım:
+   saveContactMessage($name, $phone, $message);
+
+┌─────────────────────────────────────────────────────────────┐
+│ 6. ORDERS - Siparişler                                      │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Sipariş takibi için (gelecek için hazır)
+İçerik: Boş
+
+┌─────────────────────────────────────────────────────────────┐
+│ 7. ADMIN_USERS - Admin Kullanıcıları                       │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Admin panel girişi için
+İçerik: 1 admin kullanıcı hazır
+
+Varsayılan Giriş:
+   Kullanıcı Adı: admin
+   Şifre: password
+
+⚠️ ÖNEMLİ: İlk girişte mutlaka şifreyi değiştirin!
+
+┌─────────────────────────────────────────────────────────────┐
+│ 8. SITE_STATISTICS - İstatistikler                         │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Günlük ziyaretçi, tıklama istatistikleri
+İçerik: Boş (otomatik dolacak)
+
+Örnek Kullanım:
+   recordStatistic('page_views');
+   recordStatistic('whatsapp_clicks');
+
+┌─────────────────────────────────────────────────────────────┐
+│ 9. BLOG_POSTS - Blog Yazıları                              │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Blog sistemi için (gelecek için hazır)
+İçerik: Boş
+
+┌─────────────────────────────────────────────────────────────┐
+│ 10. SLIDERS - Slider Yönetimi                              │
+└─────────────────────────────────────────────────────────────┘
+Kullanım: Ana sayfa slider'ları
+İçerik: 1 örnek slider hazır
+
+
+═══════════════════════════════════════════════════════════════
+📚 EK BİLGİLER
+═══════════════════════════════════════════════════════════════
+
+🔐 Güvenlik:
+   ✅ PDO ile prepared statements
+   ✅ XSS koruması (clean fonksiyonu)
+   ✅ SQL injection koruması
+   ✅ Password hashing (bcrypt)
+
+📊 İstatistik Takibi:
+   - Sayfa görüntülenme
+   - Ürün görüntülenme
+   - WhatsApp tıklama
+   - Telefon tıklama
+   - Form gönderimi
+
+🔄 Gelecek Özellikler:
+   - Admin panel (ürün/kategori yönetimi)
+   - Online ödeme sistemi
+   - Müşteri kayıt sistemi
+   - Stok takibi
+   - Kurye sistemi
+   - SMS bildirimleri
+
+
+═══════════════════════════════════════════════════════════════
+🎯 SONRAKI ADIMLAR
+═══════════════════════════════════════════════════════════════
+
+1. ✅ SQL dosyasını içe aktarın
+2. ✅ Bağlantı ayarlarını kontrol edin
+3. ✅ Test dosyasını çalıştırın
+4. 🔜 config.php'deki bilgileri veritabanından çekin
+5. 🔜 Ürün listelemeyi veritabanından yapın
+6. 🔜 İletişim formu mesajlarını kaydedin
+7. 🔜 Admin panel geliştirin (opsiyonel)
+
+
+═══════════════════════════════════════════════════════════════
+
+✨ Veritabanı kurulumu tamamlandı! Artık dinamik bir yapınız var! 🎉
+
+═══════════════════════════════════════════════════════════════
+

@@ -1,0 +1,13 @@
+# Papatya Botanik - Robots.txt
+# Arama motorları için talimatlar
+
+User-agent: *
+Allow: /
+
+# İzin verilmeyen alanlar
+Disallow: /includes/
+Disallow: /assets/
+
+# Sitemap konumu (site canlıya alındığında güncelleyin)
+Sitemap: http://localhost/botanik/papatyabotabik2/sitemap.xml
+

@@ -1,0 +1,102 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║         📚 VERİTABANI DOSYALARI - BİLGİLENDİRME 📚             ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+Bu klasörde veritabanı ile ilgili tüm dosyalar bulunmaktadır.
+
+
+📂 DOSYALAR
+═══════════════════════════════════════════════════════════════
+
+1. papatya_botanik.sql
+   ├─ Ana veritabanı SQL dosyası
+   ├─ phpMyAdmin'e içe aktarılacak
+   ├─ 10 tablo + veriler içerir
+   └─ Kurulum için mutlaka gerekli
+
+2. KURULUM_REHBERI.txt
+   ├─ Detaylı kurulum talimatları
+   ├─ Adım adım anlatım
+   ├─ Sorun giderme ipuçları
+   └─ İlk önce bunu okuyun!
+
+3. OKUBENI.txt
+   └─ Bu dosya (bilgilendirme)
+
+
+🚀 HIZLI BAŞLANGIÇ
+═══════════════════════════════════════════════════════════════
+
+Adım 1: XAMPP'de MySQL'i başlatın
+Adım 2: http://localhost/phpmyadmin adresini açın
+Adım 3: "Import" sekmesine tıklayın
+Adım 4: "papatya_botanik.sql" dosyasını seçin
+Adım 5: "Go" butonuna basın
+Adım 6: ✅ Kurulum tamamlandı!
+
+
+📋 VERİTABANI İÇERİĞİ
+═══════════════════════════════════════════════════════════════
+
+Veritabanı Adı: papatya_botanik
+
+Tablolar ve Kayıtlar:
+✅ site_settings       → 16 ayar kaydı
+✅ categories          → 8 kategori kaydı
+✅ products            → 5 örnek ürün kaydı
+✅ product_gallery     → Boş (sizin eklemeniz için)
+✅ contact_messages    → Boş (formdan gelecek)
+✅ orders              → Boş (siparişler için)
+✅ admin_users         → 1 admin kullanıcı
+✅ site_statistics     → Boş (otomatik dolacak)
+✅ blog_posts          → Boş (gelecek için)
+✅ sliders             → 1 slider kaydı
+
+
+🔑 VARSAYILAN GİRİŞ BİLGİLERİ
+═══════════════════════════════════════════════════════════════
+
+Admin Panel (gelecekte eklenecek):
+Kullanıcı Adı: admin
+Şifre: password
+
+⚠️ ÖNEMLİ: İlk girişte mutlaka şifreyi değiştirin!
+
+
+📖 DETAYLI DOKÜMANTASYON
+═══════════════════════════════════════════════════════════════
+
+Daha fazla bilgi için:
+👉 KURULUM_REHBERI.txt dosyasını okuyun
+👉 ../README.md dosyasına bakın
+👉 ../test_db.php ile test edin
+
+
+🛠️ KURULUM SONRASI
+═══════════════════════════════════════════════════════════════
+
+1. ✅ SQL dosyasını phpMyAdmin'e aktarın
+2. ✅ includes/db.php bağlantısını kontrol edin
+3. ✅ test_db.php ile test edin
+4. ✅ products_db.php örnek sayfayı inceleyin
+5. 🔜 Kendi ürünlerinizi ekleyin
+6. 🔜 Admin panel geliştirin
+
+
+⚠️ YARDIM VE DESTEK
+═══════════════════════════════════════════════════════════════
+
+Sorun yaşarsanız:
+📖 KURULUM_REHBERI.txt → "Sorun Giderme" bölümü
+🌐 test_db.php → Bağlantı testi
+📧 Hata mesajlarını dikkatle okuyun
+
+
+═══════════════════════════════════════════════════════════════
+
+✨ Başarılar! Veritabanı kurulumunuz kolaylıkla tamamlanacak! 🌸
+
+═══════════════════════════════════════════════════════════════
+

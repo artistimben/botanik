@@ -1,0 +1,223 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║        🌸 PAPATYA BOTANİK - WEB SİTESİ KURULUM KILAVUZU 🌸      ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 İÇİNDEKİLER
+═══════════════════════════════════════════════════════════════
+1. Sistem Gereksinimleri
+2. XAMPP Kurulumu ve Başlatma
+3. Site Yapılandırması
+4. İletişim Bilgilerini Güncelleme
+5. Siteyi Test Etme
+6. Sorun Giderme
+
+
+═══════════════════════════════════════════════════════════════
+1️⃣ SİSTEM GEREKSİNİMLERİ
+═══════════════════════════════════════════════════════════════
+
+✅ XAMPP (Apache + PHP 7.4 veya üzeri)
+✅ Modern web tarayıcısı (Chrome, Firefox, Safari, Edge)
+✅ Minimum 100 MB boş disk alanı
+
+
+═══════════════════════════════════════════════════════════════
+2️⃣ XAMPP KURULUMU VE BAŞLATMA
+═══════════════════════════════════════════════════════════════
+
+Adım 1: XAMPP Control Panel'i Açın
+   📍 Konum: C:\xampp\xampp-control.exe
+
+Adım 2: Apache'yi Başlatın
+   ▶ "Apache" satırındaki "Start" butonuna tıklayın
+   ✓ Apache başarıyla başladığında yeşil renk olacaktır
+   
+Adım 3: Tarayıcınızı Açın
+   🌐 Adres çubuğuna yazın: http://localhost/
+   ✓ XAMPP karşılama ekranı görünmelidir
+
+
+═══════════════════════════════════════════════════════════════
+3️⃣ SİTE YAPILANDIRMASI
+═══════════════════════════════════════════════════════════════
+
+✅ Site Dosyaları
+   Dosyalar zaten şu konumda: 
+   📁 C:\xampp\htdocs\botanik\papatyabotabik2\
+
+✅ Klasör Yapısı
+   papatyabotabik2/
+   ├── index.php              (Ana sayfa)
+   ├── products.php           (Ürünler sayfası)
+   ├── includes/              (PHP dosyaları)
+   ├── assets/                (CSS & JS)
+   └── images/                (Görseller)
+
+
+═══════════════════════════════════════════════════════════════
+4️⃣ İLETİŞİM BİLGİLERİNİ GÜNCELLEME
+═══════════════════════════════════════════════════════════════
+
+🎯 ÖNEMLİ: Siteyi kullanmadan önce iletişim bilgilerinizi 
+          mutlaka güncelleyin!
+
+Adım 1: Config Dosyasını Açın
+   📄 Dosya: includes/config.php
+   
+Adım 2: Aşağıdaki Satırları Bulun ve Değiştirin:
+
+   ┌─────────────────────────────────────────────────────┐
+   │ TELEFON NUMARASI                                    │
+   └─────────────────────────────────────────────────────┘
+   Bulun:
+   define('PHONE_NUMBER', '0555 123 45 67');
+   
+   Değiştirin:
+   define('PHONE_NUMBER', '0XXX XXX XX XX');  ← Kendi numaranız
+   
+   ┌─────────────────────────────────────────────────────┐
+   │ WHATSAPP NUMARASI                                   │
+   └─────────────────────────────────────────────────────┘
+   Bulun:
+   define('WHATSAPP_NUMBER', '905551234567');
+   
+   Değiştirin:
+   define('WHATSAPP_NUMBER', '90XXXXXXXXXX');  ← Kendi numaranız
+   
+   ⚠ DİKKAT: 90 ile başlamalı, boşluk olmamalı!
+   Örnek: 905321234567
+   
+   ┌─────────────────────────────────────────────────────┐
+   │ E-POSTA ADRESİ                                      │
+   └─────────────────────────────────────────────────────┘
+   Bulun:
+   define('EMAIL', 'info@papatyabotanik.com');
+   
+   Değiştirin:
+   define('EMAIL', 'sizin@emailiniz.com');  ← Kendi e-postanız
+   
+   ┌─────────────────────────────────────────────────────┐
+   │ ADRES                                               │
+   └─────────────────────────────────────────────────────┘
+   Bulun:
+   define('ADDRESS', 'Örnek Mahallesi, Çiçek Sokak No:1');
+   
+   Değiştirin:
+   define('ADDRESS', 'Gerçek adresiniz buraya');
+   
+   ┌─────────────────────────────────────────────────────┐
+   │ SOSYAL MEDYA (Opsiyonel)                           │
+   └─────────────────────────────────────────────────────┘
+   define('INSTAGRAM', 'papatyabotanik');  ← Instagram kullanıcı adı
+   define('FACEBOOK', 'papatyabotanik');   ← Facebook sayfa adı
+
+Adım 3: Dosyayı Kaydedin
+   💾 Ctrl + S veya File > Save
+
+
+═══════════════════════════════════════════════════════════════
+5️⃣ SİTEYİ TEST ETME
+═══════════════════════════════════════════════════════════════
+
+Adım 1: Ana Sayfayı Açın
+   🌐 http://localhost/botanik/papatyabotabik2/
+   
+   Kontrol Listesi:
+   ✓ Sayfa düzgün yükleniyor mu?
+   ✓ Görseller görünüyor mu?
+   ✓ Kategoriler listeleniyor mu?
+   ✓ WhatsApp butonu çalışıyor mu?
+
+Adım 2: Ürünler Sayfasını Test Edin
+   🌐 http://localhost/botanik/papatyabotabik2/products.php
+   
+   Kontrol Listesi:
+   ✓ Ürünler görünüyor mu?
+   ✓ Kategori filtreleri çalışıyor mu?
+   ✓ Resim büyütme (lightbox) çalışıyor mu?
+   ✓ "Sipariş Ver" butonları çalışıyor mu?
+
+Adım 3: Mobil Görünümü Test Edin
+   🔧 Tarayıcıda F12 tuşuna basın
+   📱 "Toggle device toolbar" tıklayın (Ctrl+Shift+M)
+   
+   Kontrol Listesi:
+   ✓ Mobil menü açılıyor mu?
+   ✓ Düzen bozulmuyor mu?
+   ✓ Tüm butonlar tıklanabiliyor mu?
+
+Adım 4: İletişim Özelliklerini Test Edin
+   ✓ WhatsApp butonuna tıklayın → Doğru numarayı açıyor mu?
+   ✓ Telefon butonuna tıklayın → Doğru numara görünüyor mu?
+   ✓ İletişim formu çalışıyor mu?
+
+
+═══════════════════════════════════════════════════════════════
+6️⃣ SORUN GİDERME
+═══════════════════════════════════════════════════════════════
+
+❌ PROBLEM: "Sayfa açılmıyor"
+   ✓ XAMPP'de Apache çalışıyor mu kontrol edin
+   ✓ URL'yi doğru yazdığınızdan emin olun
+   ✓ Port 80 başka program tarafından kullanılıyor olabilir
+
+❌ PROBLEM: "Görseller görünmüyor"
+   ✓ images/GÖRSELLER/ klasörü var mı kontrol edin
+   ✓ Resim dosya isimleri Türkçe karakter içermiyor mu?
+   ✓ Dosya yollarını kontrol edin
+
+❌ PROBLEM: "WhatsApp açılmıyor"
+   ✓ config.php'de WHATSAPP_NUMBER doğru mu?
+   ✓ Format: 905XXXXXXXXX (boşluksuz, 90 ile başlayan)
+   ✓ Tarayıcınızda JavaScript aktif mi?
+
+❌ PROBLEM: "Stil bozuk görünüyor"
+   ✓ assets/css/style.css dosyası var mı?
+   ✓ Tarayıcı önbelleğini temizleyin (Ctrl+Shift+Del)
+   ✓ Sayfayı yenileyin (F5 veya Ctrl+F5)
+
+❌ PROBLEM: "Mobil menü açılmıyor"
+   ✓ assets/js/main.js dosyası yükleniyor mu?
+   ✓ Tarayıcı konsolunda (F12) hata var mı?
+
+
+═══════════════════════════════════════════════════════════════
+📚 EK BİLGİLER
+═══════════════════════════════════════════════════════════════
+
+📖 Detaylı Dokümantasyon
+   👉 README.md dosyasına bakın
+
+🎨 Renkleri Değiştirmek
+   👉 assets/css/style.css → :root bölümü
+
+🖼️ Logo Değiştirmek
+   👉 images/LOGO/ klasörüne yeni logo ekleyin
+   👉 includes/header.php dosyasında yolu güncelleyin
+
+📦 Yeni Ürün Eklemek
+   👉 Sadece images/GÖRSELLER/[kategori]/ klasörüne resim ekleyin
+   👉 Site otomatik olarak algılayacaktır
+
+➕ Yeni Kategori Eklemek
+   👉 includes/config.php → $categories dizisine ekleyin
+
+
+═══════════════════════════════════════════════════════════════
+📞 YARDIM
+═══════════════════════════════════════════════════════════════
+
+Sorun yaşarsanız:
+1. README.md dosyasını okuyun
+2. Sorun Giderme bölümüne bakın
+3. XAMPP loglarını kontrol edin (xampp/apache/logs/)
+
+
+═══════════════════════════════════════════════════════════════
+
+✨ Başarılar! Site hazır, müşterilerinizi bekliyorsunuz! 🌸
+
+═══════════════════════════════════════════════════════════════
+

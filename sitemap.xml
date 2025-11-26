@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Ana Sayfa -->
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Ürünler Sayfası -->
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Kategoriler -->
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php?category=buketler</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php?category=arajmanlar</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php?category=isteme-cicekleri</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php?category=arac-susleme</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php?category=celenkler</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php?category=hediyelik</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php?category=lale</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://localhost/botanik/papatyabotabik2/products.php?category=peyzaj</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>
+
