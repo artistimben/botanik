@@ -1,0 +1,29 @@
+[27-Nov-2025 21:32:17 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function cleanInput() in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php on line 20
+[27-Nov-2025 21:32:23 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function cleanInput() in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php on line 20
+[27-Nov-2025 21:32:56 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function cleanInput() in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php on line 20
+[27-Nov-2025 21:33:10 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function cleanInput() in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php on line 20
+[27-Nov-2025 21:33:22 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function cleanInput() in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php on line 20
+[27-Nov-2025 21:35:17 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function cleanInput() in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\botanik\papatyabotanik\admin\login.php on line 20
+[27-Nov-2025 21:36:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\botanik\papatyabotanik\admin\includes\functions.php:29
+Stack trace:
+#0 C:\xampp\htdocs\botanik\papatyabotanik\admin\test.php(89): getAdminStats()
+#1 {main}
+  thrown in C:\xampp\htdocs\botanik\papatyabotanik\admin\includes\functions.php on line 29

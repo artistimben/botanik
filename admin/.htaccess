@@ -1,0 +1,27 @@
+# Admin Panel .htaccess
+# Hata ayıklama için PHP ayarları
+
+# PHP hata raporlamayı aç (development için)
+php_flag display_errors On
+php_flag display_startup_errors On
+php_value error_reporting E_ALL
+
+# Güvenlik
+<Files "*.php">
+    Order Deny,Allow
+    Allow from all
+</Files>
+
+# Cache'i devre dışı bırak (development için)
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>
+
+# Directory listing'i kapat
+Options -Indexes
+
+# UTF-8 encoding
+AddDefaultCharset UTF-8
+
