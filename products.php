@@ -91,29 +91,38 @@ $selectedCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
                         $productName = $product['name'] ? $product['name'] : $category['name'];
                         ?>
                         <div class="product-card">
-                            <div class="product-image">
-                                <img src="<?php echo $image; ?>" alt="<?php echo $productName; ?>" loading="lazy">
-                                <div class="product-overlay">
-                                    <button class="product-btn view-btn" onclick="openLightbox('<?php echo $image; ?>')"
-                                        title="Büyüt">
-                                        <i class="fas fa-search-plus"></i>
-                                    </button>
-                                    <button class="product-btn whatsapp-btn"
-                                        onclick="orderViaWhatsApp('<?php echo $category['name']; ?>', '<?php echo addslashes($productName); ?>', '<?php echo SITE_URL . '/' . $image; ?>')"
-                                        title="WhatsApp ile Sipariş">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </button>
-                                    <button class="product-btn call-btn"
-                                        onclick="orderViaCall('<?php echo addslashes($productName); ?>')"
-                                        title="Telefon ile Sipariş">
-                                        <i class="fas fa-phone"></i>
-                                    </button>
+                            <a href="product-detail.php?id=<?php echo $product['id']; ?>"
+                                style="text-decoration: none; color: inherit;">
+                                <div class="product-image">
+                                    <img src="<?php echo $image; ?>" alt="<?php echo $productName; ?>" loading="lazy">
+                                    <div class="product-overlay">
+                                        <button class="product-btn view-btn"
+                                            onclick="event.preventDefault(); event.stopPropagation(); openLightbox('<?php echo $image; ?>')"
+                                            title="Büyüt">
+                                            <i class="fas fa-search-plus"></i>
+                                        </button>
+                                        <button class="product-btn whatsapp-btn"
+                                            onclick="event.preventDefault(); event.stopPropagation(); orderViaWhatsApp('<?php echo $category['name']; ?>', '<?php echo addslashes($productName); ?>', '<?php echo SITE_URL . '/product-detail.php?id=' . $product['id']; ?>')"
+                                            title="WhatsApp ile Sipariş">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </button>
+                                        <button class="product-btn call-btn"
+                                            onclick="event.preventDefault(); event.stopPropagation(); orderViaCall('<?php echo addslashes($productName); ?>')"
+                                            title="Telefon ile Sipariş">
+                                            <i class="fas fa-phone"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                             <div class="product-info">
-                                <h3 class="product-name"><?php echo $productName; ?></h3>
+                                <h3 class="product-name">
+                                    <a href="product-detail.php?id=<?php echo $product['id']; ?>"
+                                        style="text-decoration: none; color: inherit;">
+                                        <?php echo $productName; ?>
+                                    </a>
+                                </h3>
                                 <div class="product-actions">
-                                    <a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>?text=<?php echo urlencode('Merhaba, ' . $category['name'] . ' - ' . $productName . "\n\nÜrün Resmi: " . SITE_URL . '/' . $image); ?>"
+                                    <a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>?text=<?php echo urlencode('Merhaba, ' . $productName . ' ürünü hakkında bilgi almak istiyorum.' . "\n\n" . SITE_URL . '/product-detail.php?id=' . $product['id']); ?>"
                                         class="btn btn-sm btn-success" target="_blank">
                                         <i class="fab fa-whatsapp"></i> Sipariş Ver
                                     </a>
