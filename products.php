@@ -138,38 +138,6 @@ $selectedCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
                             </a>
                         </div>
                     <?php endif; ?>
-
-                    <?php
-                    // Videoları da göster - max 6 video
-                    $videos_limited = array_slice($videos, 0, 6);
-                    foreach ($videos_limited as $index => $video):
-                        $videoName = pathinfo($video, PATHINFO_FILENAME);
-                        ?>
-                        <div class="product-card video-card">
-                            <div class="product-image video-container">
-                                <video controls poster="">
-                                    <source src="<?php echo $video; ?>" type="video/mp4">
-                                    Tarayıcınız video etiketini desteklemiyor.
-                                </video>
-                                <div class="video-badge">
-                                    <i class="fas fa-play"></i> Video
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-name"><?php echo $category['name']; ?> - Video</h3>
-                                <div class="product-actions">
-                                    <a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>?text=Merhaba, <?php echo urlencode($category['name']); ?> video ürün hakkında bilgi almak istiyorum"
-                                        class="btn btn-sm btn-success" target="_blank">
-                                        <i class="fab fa-whatsapp"></i> Sipariş Ver
-                                    </a>
-                                    <a href="tel:<?php echo str_replace(' ', '', PHONE_NUMBER); ?>"
-                                        class="btn btn-sm btn-outline">
-                                        <i class="fas fa-phone"></i> Ara
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
                 </div>
             </div>
 

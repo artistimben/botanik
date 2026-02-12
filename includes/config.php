@@ -14,6 +14,8 @@ $dbSettings = getAllSettings();
 define('SITE_NAME', $dbSettings['site_name'] ?? 'Papatya Botanik');
 define('SITE_TITLE', $dbSettings['site_title'] ?? 'Papatya Botanik - Doğal Çiçek ve Bitki Dünyası');
 define('SITE_DESCRIPTION', $dbSettings['site_description'] ?? 'Papatya Botanik ile özel günlerinizi çiçeklerle süsleyin. Buket, arajman, isteme çiçekleri ve daha fazlası.');
+define('SITE_URL', 'http://localhost:8000');
+
 
 // İletişim Bilgileri
 define('PHONE_NUMBER', $dbSettings['phone_number'] ?? '0536 546 94 31');
