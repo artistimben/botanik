@@ -123,11 +123,11 @@ $selectedCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
                                 </h3>
                                 <div class="product-actions">
                                     <a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>?text=<?php
-                                       $whatsappMsg = "🌸 *" . $productName . "*\n\n";
-                                       $whatsappMsg .= "📁 Kategori: " . $category['name'] . "\n\n";
+                                       $whatsappMsg = "*" . $productName . "*\n";
+                                       $whatsappMsg .= "Kategori: " . $category['name'] . "\n\n";
                                        $whatsappMsg .= "Merhaba, bu ürün hakkında bilgi almak istiyorum.\n\n";
-                                       $whatsappMsg .= "🔗 Ürün Detayı:\n" . SITE_URL . '/product-detail.php?id=' . $product['id'] . "\n\n";
-                                       $whatsappMsg .= "📷 Ürün Resmi:\n" . SITE_URL . '/' . $image;
+                                       $whatsappMsg .= SITE_URL . '/product-detail.php?id=' . $product['id'] . "\n\n";
+                                       $whatsappMsg .= SITE_URL . '/' . $image;
                                        echo urlencode($whatsappMsg);
                                        ?>" class="btn btn-sm btn-success" target="_blank">
                                         <i class="fab fa-whatsapp"></i> Sipariş Ver
