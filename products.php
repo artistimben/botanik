@@ -113,7 +113,7 @@ $selectedCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
                             <div class="product-info">
                                 <h3 class="product-name"><?php echo $productName; ?></h3>
                                 <div class="product-actions">
-                                    <a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>?text=Merhaba, <?php echo urlencode($category['name'] . ' - ' . $productName . "\n\nÜrün Resmi: " . SITE_URL . '/' . $image); ?>"
+                                    <a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>?text=<?php echo urlencode('Merhaba, ' . $category['name'] . ' - ' . $productName . "\n\nÜrün Resmi: " . SITE_URL . '/' . $image); ?>"
                                         class="btn btn-sm btn-success" target="_blank">
                                         <i class="fab fa-whatsapp"></i> Sipariş Ver
                                     </a>
