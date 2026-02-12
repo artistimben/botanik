@@ -186,10 +186,13 @@ require_once 'includes/header.php';
 
             <div class="product-actions-detail">
                 <a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>?text=<?php
-                   echo urlencode('Merhaba, ' . $product['name'] . ' ürünü hakkında bilgi almak istiyorum.' . "\n\n" . SITE_URL . '/product-detail.php?id=' . $product['id']);
-                   ?>"
-                    class="btn-large btn-whatsapp"
-                    target="_blank">
+                   $whatsappMessage = "🌸 *" . $product['name'] . "*\n\n";
+                   $whatsappMessage .= "📁 Kategori: " . $product['category_name'] . "\n\n";
+                   $whatsappMessage .= "Merhaba, bu ürün hakkında bilgi almak istiyorum.\n\n";
+                   $whatsappMessage .= "🔗 Ürün Detayı:\n" . SITE_URL . '/product-detail.php?id=' . $product['id'] . "\n\n";
+                   $whatsappMessage .= "📷 Ürün Resmi:\n" . SITE_URL . '/' . $product['image_path'];
+                   echo urlencode($whatsappMessage);
+                   ?>" class="btn-large btn-whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i> WhatsApp ile Sipariş Ver
                 </a>
 
