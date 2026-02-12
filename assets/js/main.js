@@ -6,26 +6,26 @@
 // ========================================
 // 1. DOM Yüklendikten Sonra Çalışacak Kodlar
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // Mobil menü toggle
     initMobileMenu();
-    
+
     // Scroll animasyonları
     initScrollAnimations();
-    
+
     // Lightbox (resim büyütme) işlevleri
     initLightbox();
-    
+
     // Contact form
     initContactForm();
-    
+
     // Smooth scroll
     initSmoothScroll();
-    
+
     // Navbar scroll efekti
     initNavbarScroll();
-    
+
     console.log('Papatya Botanik - Site yüklendi ✓');
 });
 
@@ -35,25 +35,25 @@ document.addEventListener('DOMContentLoaded', function() {
 function initMobileMenu() {
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navMenu = document.getElementById('navMenu');
-    
+
     if (mobileMenuToggle && navMenu) {
-        mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.addEventListener('click', function () {
             navMenu.classList.toggle('active');
             this.classList.toggle('active');
         });
-        
+
         // Menü dışına tıklandığında menüyü kapat
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
                 mobileMenuToggle.classList.remove('active');
             }
         });
-        
+
         // Menü linkine tıklandığında menüyü kapat
         const navLinks = navMenu.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 navMenu.classList.remove('active');
                 mobileMenuToggle.classList.remove('active');
             });
@@ -67,16 +67,16 @@ function initMobileMenu() {
 function initScrollAnimations() {
     // PERFORMANS İYİLEŞTİRMESİ: Scroll animasyonları devre dışı
     // Çok fazla ürün olduğunda kasıyor, bu yüzden kapatıldı
-    
+
     // Tüm elementlere hemen aos-animate sınıfı ekle (animasyon yok, direkt göster)
     const animatedElements = document.querySelectorAll('[data-aos]');
     animatedElements.forEach(element => {
         element.classList.add('aos-animate');
         element.removeAttribute('data-aos'); // Temizle
     });
-    
+
     return; // Animasyon yok, direkt çık
-    
+
     /* ESKI KOD - GEREKİRSE AKTİF EDİN
     if (animatedElements.length === 0) return;
     
@@ -109,23 +109,23 @@ function initLightbox() {
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.querySelector('.lightbox-close');
     const lightboxWhatsapp = document.getElementById('lightbox-whatsapp');
-    
+
     if (!lightbox) return;
-    
+
     // Lightbox'ı kapat
     if (lightboxClose) {
         lightboxClose.addEventListener('click', closeLightbox);
     }
-    
+
     // Lightbox dışına tıklandığında kapat
-    lightbox.addEventListener('click', function(e) {
+    lightbox.addEventListener('click', function (e) {
         if (e.target === lightbox) {
             closeLightbox();
         }
     });
-    
+
     // ESC tuşu ile kapat
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && lightbox.classList.contains('active')) {
             closeLightbox();
         }
@@ -137,17 +137,18 @@ function openLightbox(imageSrc) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxWhatsapp = document.getElementById('lightbox-whatsapp');
-    
+
     if (lightbox && lightboxImg) {
         currentImageSrc = imageSrc;
         lightboxImg.src = imageSrc;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
-        
+
         // WhatsApp butonunu güncelle
         if (lightboxWhatsapp) {
-            const imageName = imageSrc.split('/').pop();
-            lightboxWhatsapp.href = `https://wa.me/${getWhatsAppNumber()}?text=Merhaba, ${encodeURIComponent(imageName)} hakkında bilgi almak istiyorum`;
+            const fullImageUrl = window.location.origin + '/' + imageSrc;
+            const message = `Merhaba, bu ürün hakkında bilgi almak istiyorum: ${fullImageUrl}`;
+            lightboxWhatsapp.href = `https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(message)}`;
         }
     }
 }
@@ -155,7 +156,7 @@ function openLightbox(imageSrc) {
 // Lightbox'ı kapat
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
-    
+
     if (lightbox) {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
@@ -165,8 +166,11 @@ function closeLightbox() {
 // ========================================
 // 5. WhatsApp Sipariş Fonksiyonları
 // ========================================
-function orderViaWhatsApp(categoryName, productName) {
-    const message = `Merhaba, ${categoryName} - ${productName} hakkında bilgi almak istiyorum`;
+function orderViaWhatsApp(categoryName, productName, imageUrl) {
+    let message = `Merhaba, ${categoryName} - ${productName} hakkında bilgi almak istiyorum.`;
+    if (imageUrl) {
+        message += `\n\nÜrün Resmi: ${imageUrl}`;
+    }
     const whatsappUrl = `https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
@@ -191,15 +195,15 @@ function getPhoneNumber() {
 function filterCategory(category) {
     const categorySections = document.querySelectorAll('.category-section');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    
+
     // Tüm kategori butonlarından active sınıfını kaldır
     filterBtns.forEach(btn => {
         btn.classList.remove('active');
     });
-    
+
     // Tıklanan butona active sınıfı ekle
     event.target.classList.add('active');
-    
+
     // Kategorileri göster/gizle
     if (category === 'all') {
         categorySections.forEach(section => {
@@ -217,7 +221,7 @@ function filterCategory(category) {
             }
         });
     }
-    
+
     // URL'i güncelle (sayfa yenilenmeden)
     const url = new URL(window.location);
     if (category === 'all') {
@@ -226,7 +230,7 @@ function filterCategory(category) {
         url.searchParams.set('category', category);
     }
     window.history.pushState({}, '', url);
-    
+
     // Sayfayı yukarı kaydır
     window.scrollTo({
         top: 0,
@@ -239,17 +243,17 @@ function filterCategory(category) {
 // ========================================
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
-    
+
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Form verilerini al
             const formData = new FormData(contactForm);
             const name = contactForm.querySelector('input[type="text"]').value;
             const phone = contactForm.querySelector('input[type="tel"]').value;
             const message = contactForm.querySelector('textarea').value;
-            
+
             // WhatsApp mesajı oluştur
             const whatsappMessage = `
 Yeni İletişim Formu:
@@ -258,14 +262,14 @@ Ad Soyad: ${name}
 Telefon: ${phone}
 Mesaj: ${message}
             `.trim();
-            
+
             // WhatsApp'a yönlendir
             const whatsappUrl = `https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappUrl, '_blank');
-            
+
             // Formu temizle
             contactForm.reset();
-            
+
             // Başarı mesajı göster
             showNotification('Mesajınız WhatsApp üzerinden iletilecek!', 'success');
         });
@@ -292,9 +296,9 @@ function showNotification(message, type = 'info') {
         z-index: 10000;
         animation: slideInRight 0.3s ease;
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // 3 saniye sonra kaldır
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.3s ease';
@@ -310,20 +314,20 @@ function showNotification(message, type = 'info') {
 function initSmoothScroll() {
     // Tüm # ile başlayan linklere smooth scroll ekle
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            
+
             // Sadece # değilse
             if (href !== '#') {
                 const targetId = href.substring(1);
                 const targetElement = document.getElementById(targetId);
-                
+
                 if (targetElement) {
                     e.preventDefault();
-                    
+
                     const navbarHeight = document.querySelector('.main-header').offsetHeight;
                     const targetPosition = targetElement.offsetTop - navbarHeight;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -340,19 +344,19 @@ function initSmoothScroll() {
 function initNavbarScroll() {
     const navbar = document.querySelector('.main-header');
     let lastScroll = 0;
-    
+
     if (!navbar) return;
-    
-    window.addEventListener('scroll', function() {
+
+    window.addEventListener('scroll', function () {
         const currentScroll = window.pageYOffset;
-        
+
         // Aşağı scroll - shadow ekle
         if (currentScroll > 100) {
             navbar.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
         } else {
             navbar.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
         }
-        
+
         lastScroll = currentScroll;
     });
 }
@@ -362,7 +366,7 @@ function initNavbarScroll() {
 // ========================================
 function initLazyLoading() {
     const images = document.querySelectorAll('img[loading="lazy"]');
-    
+
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -374,7 +378,7 @@ function initLazyLoading() {
                 }
             });
         });
-        
+
         images.forEach(img => imageObserver.observe(img));
     }
 }
@@ -384,9 +388,9 @@ function initLazyLoading() {
 // ========================================
 function initScrollIndicator() {
     const scrollIndicator = document.querySelector('.scroll-indicator');
-    
+
     if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', function() {
+        scrollIndicator.addEventListener('click', function () {
             window.scrollTo({
                 top: window.innerHeight,
                 behavior: 'smooth'
@@ -418,10 +422,10 @@ function getUrlParameter(name) {
 // ========================================
 
 // Sayfa tamamen yüklendiğinde
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // Lazy loading'i başlat
     initLazyLoading();
-    
+
     // Preloader varsa kaldır
     const preloader = document.querySelector('.preloader');
     if (preloader) {
